@@ -1,0 +1,21 @@
+{
+  "pdf_directory": "Data",
+  "output_file": "extracted_data.json",
+  "use_ai_enhancement": false,
+  "gemini_model": "gemini-2.5-flash",
+  "gemini_api_key_env": "GEMINI_API_KEY",
+  "max_retries": 3,
+  "chunk_size": 3500,
+  "chunk_overlap": 200,
+  "confidence_threshold_deterministic": 0.85,
+  "confidence_threshold_ai": 0.6,
+  "enable_ocr": true,
+  "ocr_languages": ["eng", "ara"],
+  "ocr_dpi": 300,
+  "enable_ner": false,
+  "use_embeddings": true,
+  "enable_human_review_queue": true,
+  "review_threshold": 0.7,
+  "enable_caching": false,
+  "log_level": "INFO"
+}

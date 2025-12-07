@@ -1,0 +1,746 @@
+{
+  "total_documents": 15,
+  "documents": {
+    "Cabinet Resolution No. (12) of 2025 Regarding the Procedures of Objections and Appeals by Government Authorities on Tax Dispute.pdf": {
+      "citations": {
+        "total_extracted": 3,
+        "verified_count": 3,
+        "verified_items": [
+          "Federal Decree Law No. (28) of 2022 on Tax Procedures, as amended",
+          "Cabinet Resolution No. (12) of 2025 Regarding Regulating the Procedures of Objections and Appeals by",
+          "Cabinet Resolution No. (58) of 2017 Concerning Government Authorities and their Activities that are "
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      },
+      "definitions": {
+        "total_extracted": 7,
+        "verified_count": 3,
+        "verified_items": [
+          "Government Authorities",
+          "Department of Finance",
+          "Committee"
+        ],
+        "unverified_items": [
+          "Authority",
+          "Authorities on Tax Disputes Objection",
+          "Competent Department",
+          "Objection"
+        ],
+        "accuracy": 42.86
+      }
+    },
+    "Cabinet Resolution No. (34) of 2025 Regarding Qualifying Investment Funds and Qualifying Limited Partnerships for the Purpo.pdf": {
+      "citations": {
+        "total_extracted": 3,
+        "verified_count": 3,
+        "verified_items": [
+          "Federal Decree by Law No. (47) of 2022 Regarding Taxation of Corporations and Business The Cabinet: ",
+          "Cabinet Resolution No. (34) of 2025 Regarding Qualifying Investment Funds and Qualifying Limited Par",
+          "Federal Decree by Law No. (28) of 2022"
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      },
+      "definitions": {
+        "total_extracted": 4,
+        "verified_count": 1,
+        "verified_items": [
+          "Investment Business"
+        ],
+        "unverified_items": [
+          "Immovable Property",
+          "Income from Immovable Property",
+          "Immovable Property Ratio"
+        ],
+        "accuracy": 25.0
+      }
+    },
+    "Cabinet Resolution No. (37) of 2017 Concerning the Executive Regulations of Federal Decree-law No. (7) of 2017 on the Excise Ta.pdf": {
+      "citations": {
+        "total_extracted": 2,
+        "verified_count": 2,
+        "verified_items": [
+          "Federal Decree-law No. (7) of 2017 Concerning the Excise Tax The Cabinet, − Having reviewed the Cons",
+          "Federal Law No. (1) of 1972 on the Competences of the Ministries and the Powers of the Ministers, as"
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      },
+      "definitions": {
+        "total_extracted": 7,
+        "verified_count": 1,
+        "verified_items": [
+          "Direct Export"
+        ],
+        "unverified_items": [
+          "Excise Tax Customer Abroad",
+          "Official Proof",
+          "Commercial Proof",
+          "Shipment Certificate",
+          "Customer Abroad",
+          "Free-Zone Retail Store"
+        ],
+        "accuracy": 14.29
+      }
+    },
+    "Cabinet Resolution No. (52) of 2017 Concerning the Executive Regulations of Federal Decree-Law No. (8) of 2017 on Value-Added T.pdf": {
+      "citations": {
+        "total_extracted": 5,
+        "verified_count": 5,
+        "verified_items": [
+          "Federal Decree by Law No. (8) of 2017 Regarding Value-Added Tax (VAT) The Cabinet, − Having reviewed",
+          "Federal Decree by Law No. (13) of 2016 Regarding the Establishment of the Federal Tax Authority",
+          "Cabinet Resolution No. (52) of 2017 Regarding the Executive Regulations of Federal Decree by Law No",
+          "Federal Law No. (1) of 1972 Regarding the Competences of Ministries and the Powers of Ministers, as ",
+          "Federal Law No. (20) of 1991 regarding Civil Aviation"
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      },
+      "definitions": {
+        "total_extracted": 69,
+        "verified_count": 10,
+        "verified_items": [
+          "State",
+          "Minister",
+          "Authority",
+          "Value Added Tax (VAT)",
+          "Telecommunication Services",
+          "E-services",
+          "Electronic Marketplace",
+          "Official evidence",
+          "Commercial evidence",
+          "Islamic financial arrangement"
+        ],
+        "unverified_items": [
+          "Tax",
+          "GCC States",
+          "Applying States",
+          "Goods",
+          "Services",
+          "Standard Rate",
+          "Importation",
+          "Relevant Goods",
+          "Relevant Services",
+          "Person",
+          "Taxable Person",
+          "Taxpayer",
+          "Legal Representative",
+          "Tax Registration",
+          "Tax Registration Number (TRN)",
+          "Registrant",
+          "Recipient of Goods",
+          "Recipient of Services",
+          "Tax Return",
+          "Consideration",
+          "Business",
+          "Exempted Supply",
+          "Taxable Supply",
+          "Deemed Supply",
+          "Input Tax",
+          "Output Tax",
+          "Refundable Tax",
+          "Due Tax",
+          "Payable Tax",
+          "Tax Period",
+          "Tax Invoice",
+          "Tax Credit Note",
+          "Government Agencies",
+          "Charities",
+          "Mandatory Registration Threshold",
+          "Business Establishment",
+          "Fixed Establishment",
+          "Place of Residence",
+          "Related Parties",
+          "Designated Area",
+          "Exportation",
+          "Indirect Exportation",
+          "Oversees Customer",
+          "Voucher",
+          "Capital Assets",
+          "Administrative Fines",
+          "Tax Group",
+          "Notification",
+          "Working Day",
+          "Virtual Assets",
+          "Tax Evasion",
+          "Added Tax (VAT) GCC States",
+          "Added Tax (VAT) Recipient of Goods",
+          "Added Tax (VAT) Due Tax",
+          "Added Tax (VAT) Fixed Establishment",
+          "Added Tax (VAT) Voucher",
+          "Transport- Related Services",
+          "Non-Resident Person",
+          "Taxable Expenses"
+        ],
+        "accuracy": 14.49
+      }
+    },
+    "Cabinet Resolution No. (55) of 2025 Exempting Certain Persons from the Corporate Tax for the Purposes of Federal Decree by Law .pdf": {
+      "citations": {
+        "total_extracted": 1,
+        "verified_count": 1,
+        "verified_items": [
+          "Federal Decree by Law No. (47) of 2022 Regarding Taxation of Corporations and Businesses The Cabinet"
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      },
+      "definitions": {
+        "total_extracted": 0,
+        "verified_count": 0,
+        "verified_items": [],
+        "unverified_items": [],
+        "accuracy": 0.0
+      }
+    },
+    "Cabinet Resolution No. (74) of 2023 on the Executive Regulations of Federal Decree-Law No. (28) of 2022 on Tax Procedures.pdf": {
+      "citations": {
+        "total_extracted": 3,
+        "verified_count": 3,
+        "verified_items": [
+          "Federal Decree-Law No. (28) of 2022 on Tax Procedures 1 Cabinet Resolution No",
+          "Federal Decree-Law No. (7) of 2017, on the Excise Tax, as amended",
+          "Federal Law No. (1) of 1972, on the Competences of Ministries and the Powers of Ministers, as amende"
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      },
+      "definitions": {
+        "total_extracted": 2,
+        "verified_count": 2,
+        "verified_items": [
+          "Headquarters",
+          "Assets"
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      }
+    },
+    "Federal Decree Law No. (32) of 2021 on Commercial Companies.pdf": {
+      "citations": {
+        "total_extracted": 1,
+        "verified_count": 1,
+        "verified_items": [
+          "Federal Law No. 2 of 2015, as well as any provision that goes against or conflicts with the provisio"
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      },
+      "definitions": {
+        "total_extracted": 21,
+        "verified_count": 8,
+        "verified_items": [
+          "State",
+          "Federal Government",
+          "Ministry",
+          "Central Bank",
+          "SCA",
+          "Competent Authority",
+          "Company",
+          "Cumulative voting"
+        ],
+        "unverified_items": [
+          "Local Government",
+          "Governance",
+          "Business Day",
+          "Special Resolution",
+          "Registrar",
+          "Markets",
+          "Securities",
+          "Public Offering",
+          "Book Building",
+          "Strategic Partner",
+          "Share Register",
+          "Director",
+          "Special Purpose Vehicle [SPV]"
+        ],
+        "accuracy": 38.1
+      }
+    },
+    "Federal Decree by Law No. (28) of 2022 Concerning Tax Procedures.pdf": {
+      "citations": {
+        "total_extracted": 11,
+        "verified_count": 11,
+        "verified_items": [
+          "Federal Decree-Law No. (9) of 2016, on Bankruptcy, as amended",
+          "Federal Decree-Law No. (13) of 2016, on the Establishment of the Federal Tax Authority, as amended",
+          "Federal Decree-Law No. (15) of 2018, on the Collection of Revenues and Public Funds",
+          "Federal Decree-Law No. (32) of 2021, on Commercial Companies",
+          "Federal Decree-Law No. (46) of 2021, on Electronic Transactions and Trust Services",
+          "Federal Law No. (1) of 1972, on the Competences of Ministries and the Powers of Ministers, as amende",
+          "Federal Law No. (11) of 1981, on the Imposition of a Federal Customs Tax on Imports of Tobacco and T",
+          "Federal Law No. (5) of 1985, Promulgating the Civil Transactions Law, as amended",
+          "Decree-Law No. (8) of 2017, on the Value-Added Tax (VAT), as amended",
+          "Federal Decree-Law No. (31) of 2021, Promulgating the Law of Crimes and Penalties",
+          "Federal Law No. (11) of 1992, Promulgating the Code of Civil Procedure, as amended"
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      },
+      "definitions": {
+        "total_extracted": 34,
+        "verified_count": 7,
+        "verified_items": [
+          "State",
+          "Minister",
+          "FTA",
+          "Business Day",
+          "Committee",
+          "Tax Resident",
+          "Federal Decree-Law of 2022 on Tax Procedures"
+        ],
+        "unverified_items": [
+          "Competent Court",
+          "Tax",
+          "Tax Domicile Certificate",
+          "Person",
+          "Business",
+          "Taxable Person",
+          "Taxpayer",
+          "Tax Return",
+          "Tax Registration",
+          "Registered Person",
+          "Legal Representative",
+          "Due Tax",
+          "Payable Tax",
+          "Administrative Fines",
+          "Refundable Tax",
+          "Tax Assessment",
+          "Notification",
+          "Voluntary Declaration",
+          "Register",
+          "Tax Agent",
+          "Tax Audit",
+          "Tax Evasion",
+          "Executive Regulations",
+          "Person's use of illegal",
+          "on Tax Procedures Person",
+          "Tax Period",
+          "E-Invoicing System"
+        ],
+        "accuracy": 20.59
+      }
+    },
+    "Federal Decree by Law No. (37) Of 2021 Concerning The Commercial Register.pdf": {
+      "citations": {
+        "total_extracted": 11,
+        "verified_count": 11,
+        "verified_items": [
+          "Federal Decree Law No. (9) of 2016 Concerning Bankruptcy, as amended",
+          "Federal Decree Law No. (14) of 2018 Concerning the Central Bank of the UAE and the Regulation of Fin",
+          "Federal Decree Law No. (19) of 2019 Concerning Insolvency",
+          "Federal Decree Law No. (32) of 2021 Concerning the Commercial Companies",
+          "Federal Law No. (1) of 1972 concerning the Competences of the Ministries and the Powers of Ministers",
+          "Federal Law No. (5) of 1975 Concerning the Commercial Register",
+          "Federal Law No. (10) of 1993 Promulgating the Law of Evidence in the Civil and Commercial Transactio",
+          "Federal Law No. (8) of 2004 Concerning Financial Free Zones",
+          "Federal Law No. (1) of 2006 Concerning Electronic Transactions and Commerce, as amended",
+          "Federal Law NO. (4) of 2020 on Securing the Rights over the Movable Assets",
+          "Federal Law No. (5) of 1985 Promulgating the Civil Code, as amended"
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      },
+      "definitions": {
+        "total_extracted": 6,
+        "verified_count": 6,
+        "verified_items": [
+          "State",
+          "Ministry",
+          "Competent Authority",
+          "Economic Register Number",
+          "Commercial Register Number",
+          "Economic Activity"
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      }
+    },
+    "Federal Decree by Law No. (37) of 2022 Concerning the Family Businesses (1).pdf": {
+      "citations": {
+        "total_extracted": 9,
+        "verified_count": 9,
+        "verified_items": [
+          "Federal Decree by Law No. (9) of 2016 , Concerning Bankruptcy and its amendments thereof",
+          "Federal Law No. (1) of 1972, Concerning the Competences of Ministries and the Capacities of Minister",
+          "Federal Law No. (5) of 1985 , Promulgating the Civil Transactions Law and its amendments thereof",
+          "Federal Law No. (8) of 2004, Concerning the Financial Free Zones",
+          "Federal Law No. (28) of 2005, Concerning the Personal Status and its amendments thereof",
+          "Federal Law No. (7) of 2012, Regulating the Expert Profession before Judicial Authorities",
+          "Federal Law No. (4) of 2013 , Regulating the Profession of Notary and its amendments thereof",
+          "Federal Law No. (14) of 2016, Concerning the Administrative Violations and Penalties in the Federal ",
+          "Federal Law No. (6) of 2018, Concerning Arbitration"
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      },
+      "definitions": {
+        "total_extracted": 16,
+        "verified_count": 8,
+        "verified_items": [
+          "State",
+          "Ministry",
+          "Competent Authority",
+          "Concerned Emirate, including Free Zones The Free Zone",
+          "Family",
+          "Family Business",
+          "Concerned Authorities",
+          "Free Zone"
+        ],
+        "unverified_items": [
+          "Articles of Association",
+          "Concerned Authorities Family Charter",
+          "Share",
+          "Committee",
+          "On concerning the Family Businesses Articles of Association",
+          "Family Charter",
+          "Register",
+          "Partner/ Shareholder"
+        ],
+        "accuracy": 50.0
+      }
+    },
+    "Federal Decree by Law No. (37) of 2022 Concerning the Family Businesses.pdf": {
+      "citations": {
+        "total_extracted": 9,
+        "verified_count": 9,
+        "verified_items": [
+          "Federal Decree by Law No. (9) of 2016 , Concerning Bankruptcy and its amendments thereof",
+          "Federal Law No. (1) of 1972, Concerning the Competences of Ministries and the Capacities of Minister",
+          "Federal Law No. (5) of 1985 , Promulgating the Civil Transactions Law and its amendments thereof",
+          "Federal Law No. (8) of 2004, Concerning the Financial Free Zones",
+          "Federal Law No. (28) of 2005, Concerning the Personal Status and its amendments thereof",
+          "Federal Law No. (7) of 2012, Regulating the Expert Profession before Judicial Authorities",
+          "Federal Law No. (4) of 2013 , Regulating the Profession of Notary and its amendments thereof",
+          "Federal Law No. (14) of 2016, Concerning the Administrative Violations and Penalties in the Federal ",
+          "Federal Law No. (6) of 2018, Concerning Arbitration"
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      },
+      "definitions": {
+        "total_extracted": 16,
+        "verified_count": 8,
+        "verified_items": [
+          "State",
+          "Ministry",
+          "Competent Authority",
+          "Concerned Emirate, including Free Zones The Free Zone",
+          "Family",
+          "Family Business",
+          "Concerned Authorities",
+          "Free Zone"
+        ],
+        "unverified_items": [
+          "Articles of Association",
+          "Concerned Authorities Family Charter",
+          "Share",
+          "Committee",
+          "On concerning the Family Businesses Articles of Association",
+          "Family Charter",
+          "Register",
+          "Partner/ Shareholder"
+        ],
+        "accuracy": 50.0
+      }
+    },
+    "Federal Decree by Law No. (47) of 2022 Concerning Corporate and Business Tax.pdf": {
+      "citations": {
+        "total_extracted": 19,
+        "verified_count": 19,
+        "verified_items": [
+          "Federal Decree-Law No. (9) of 2016 on Bankruptcy, as amended",
+          "Federal Decree-Law No. (13) of 2016 on the Establishment of the Federal Tax Authority, as amended",
+          "Federal Decree-Law No. (14) of 2018 on the Central Bank and Organization of Financial Institutions a",
+          "Federal Decree-Law No. (15) of 2018 on the Collection of Public Revenue and Funds",
+          "Federal Law No. (1) of 1972 on the Competencies of Ministries and the Powers of Ministers, as amende",
+          "Federal Law No. (26) of 1981 on the Commercial Maritime Law, as amended",
+          "Federal Law No. (18) of 1993 promulgating the Commercial Transactions Law, as amended",
+          "Federal Law No. (4) of 2000 on the Emirates Securities and Commodities Authority and Market, as amen",
+          "Federal Law No. (8) of 2004 on the Financial Free Zones",
+          "Federal Law No. (2) of 2008 on NGOs and Foundations, as amended",
+          "Federal Law No. (8) of 2011 on the Reorganization of the State Audit Institution",
+          "Federal Law No. (4) of 2012 on the Regulation of Competition",
+          "Federal Law No. (2) of 2014 on Small and Medium Enterprises",
+          "Federal Law No. (12) of 2014 Regulating the Auditing Profession, as amended",
+          "Federal Decree-Law No. (32) of 2021 on Commercial Companies",
+          "Federal Decree-Law No. (46) of 2021 on Electronic Transactions and Trust Services",
+          "Federal Law No. (5) of 1985 promulgating the Civil Code, as amended",
+          "Federal Law No. (6) of 2007 Regulating the Insurance Business, as amended",
+          "Decree-Law No. (8) of 2017 referred to and what replaces it"
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      },
+      "definitions": {
+        "total_extracted": 60,
+        "verified_count": 18,
+        "verified_items": [
+          "State",
+          "Federal Government",
+          "Ministry",
+          "Authority",
+          "Corporate Tax",
+          "Person",
+          "Foreign Tax Credit",
+          "Family Foundation",
+          "Interest",
+          "Accounting Income",
+          "Exempt Income",
+          "Connected Person",
+          "Tax Loss",
+          "Foreign Permanent Establishment",
+          "Market Value",
+          "Assets held on capital account",
+          "Liabilities held on capital account",
+          "Assets and liabilities held on revenue account"
+        ],
+        "unverified_items": [
+          "Local Government",
+          "Business",
+          "Qualifying Income",
+          "Government Entity",
+          "Business Activity",
+          "Mandated Activity",
+          "State's Territory",
+          "Natural Resources",
+          "Extractive Business",
+          "Qualifying Public Benefit Entity",
+          "Qualifying Mutual Fund",
+          "Exempt Person",
+          "Taxable Person",
+          "Licensing Authority",
+          "License",
+          "Taxable Income",
+          "Fiscal Year",
+          "Tax Return",
+          "Tax Period",
+          "Related Party",
+          "Revenue",
+          "Recognized Stock Exchange",
+          "Resident Person",
+          "Free Zone",
+          "Unincorporated Association",
+          "Permanent Establishment",
+          "State Sourced Income",
+          "Qualifying Free Zone Person",
+          "On Corporate and Business Tax Recognized Stock Exchange",
+          "Net Interest Expense",
+          "Bank",
+          "Insurance Provider",
+          "Control",
+          "Tax Group",
+          "Withholding Tax Credit",
+          "Tax Registration",
+          "Tax Deregistration",
+          "Tax Procedures Law",
+          "Administrative Fines",
+          "Supplementary Tax",
+          "Multinational Enterprise",
+          "Non-Extractive Natural Resource Business"
+        ],
+        "accuracy": 30.0
+      }
+    },
+    "Federal Decree by Law No. (7) of 2017 Concerning Excise Tax.pdf": {
+      "citations": {
+        "total_extracted": 14,
+        "verified_count": 14,
+        "verified_items": [
+          "Federal Law No. (1) of 1972 Regarding the Competences of Ministries and the Powers of Ministers, as ",
+          "Federal Law No. (11) of 1981 on the Levy of a Federal Customs Tax on Imports of Tobacco and its Deri",
+          "Federal Law No. (26) of 1981 on the Commercial Maritime Law, as amended",
+          "Federal Law No. (5) of 1985 Issuing the Civil Transactions Law, as amended",
+          "Federal Law No. (8) of 2004 Regarding the Financial Free Zones",
+          "Federal Law No. (1) of 2006 on Electronic Commerce and Transactions",
+          "Federal Law No. (2) of 2008 Regarding National Societies and Associations of Public Welfare",
+          "Federal Law No. (15) of 2009 on Combating Tobacco",
+          "Federal Law No. (1) of 2011 Concerning the Public Revenues of the State",
+          "Federal Law No. (8) of 2011 on the Re-organization of the State Audit Institution",
+          "Federal Law No. (4) of 2012 on the Regulation of Competition",
+          "Federal Decree-Law No. (13) of 2016 on the Establishment of the Federal Tax Authority",
+          "Federal Law No. (3) of 1987 Issuing the Penal Code, as amended",
+          "Federal Law No. (11) of 1992 Issuing the Civil Procedure Code, as amended"
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      },
+      "definitions": {
+        "total_extracted": 26,
+        "verified_count": 9,
+        "verified_items": [
+          "State",
+          "Minister",
+          "Authority",
+          "Excise Goods",
+          "Importation",
+          "Exportation",
+          "Person",
+          "Taxable Person",
+          "Designated Area"
+        ],
+        "unverified_items": [
+          "Tax",
+          "Tax Registration",
+          "Tax Registration Number (TRN)",
+          "Registrant",
+          "Tax Return",
+          "Business",
+          "Refundable Tax",
+          "Due Tax",
+          "Payable Tax",
+          "Deductible Tax",
+          "Tax Period",
+          "Administrative Fines",
+          "Applying States",
+          "Tax Evasion",
+          "Tax Audit",
+          "Tax Assessment",
+          "Stockpiler"
+        ],
+        "accuracy": 34.62
+      }
+    },
+    "Federal Decree by Law No. (8) of 2017 Concerning Value-Added Tax (VAT).pdf": {
+      "citations": {
+        "total_extracted": 16,
+        "verified_count": 16,
+        "verified_items": [
+          "Federal Decree-Law No. (8) of 2011 on the Rules for Drafting the Public Budget and Final Account",
+          "Federal Decree-Law No. (13) of 2016 on the Establishment of the Federal Tax Authority",
+          "Federal Law No. (1) of 1972 Regarding the Competences of Ministries and the Powers of Ministers, as ",
+          "Federal Law No. (11) of 1981 on the Levy of a Federal Customs Tax on Imports of Tobacco and its Deri",
+          "Federal Law No. (26) of 1981 on the Commercial Maritime Law, as amended",
+          "Federal Law No. (5) of 1985 Issuing the Civil Transactions Law, as amended",
+          "Federal Law No. (8) of 2004 Regarding the Financial Free Zones",
+          "Federal Law No. (1) of 2006 On Electronic Commerce and Transactions",
+          "Federal Law No. (2) of 2008 Regarding National Societies and Associations of Public Welfare",
+          "Federal Law No. (1) of 2011 Concerning the Public Revenues of the State",
+          "Federal Law No. (8) of 2011 on the Re-organization of the State Audit Institution",
+          "Federal Law No. (4) of 2012 on the Regulation of Competition",
+          "Federal Law No. (2) of 2015 on Commercial Companies",
+          "Federal Law No. (7) of 2017 on Tax Procedures in the subsequent tax periods until such excess is ful",
+          "Federal Law No. (3) of 1987 Issuing the Penal Code, as amended",
+          "Federal Law No. (11) of 1992 Issuing the Civil Procedure Code, as amended"
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      },
+      "definitions": {
+        "total_extracted": 63,
+        "verified_count": 8,
+        "verified_items": [
+          "State",
+          "Minister",
+          "Authority",
+          "GCC States",
+          "Applying States",
+          "Goods",
+          "Services",
+          "Importation"
+        ],
+        "unverified_items": [
+          "Tax",
+          "Relevant Goods",
+          "Relevant Services",
+          "Person",
+          "Taxable Person",
+          "Taxpayer",
+          "Tax Registration",
+          "Tax Registration Number (TRN)",
+          "Registrant",
+          "Recipient of Goods",
+          "Recipient of Services",
+          "Taxable Trader",
+          "Tax Return",
+          "Consideration",
+          "Business",
+          "Exempted Supply",
+          "Taxable Supply",
+          "Deemed Supply",
+          "Input Tax",
+          "Output Tax",
+          "Refundable Tax",
+          "Due Tax",
+          "Payable Tax",
+          "Tax Period",
+          "Tax Invoice",
+          "Tax Credit Note",
+          "Government Agencies",
+          "Charities",
+          "Relevant Charitable Activity",
+          "Mandatory Registration Threshold",
+          "Business Establishment",
+          "Fixed Establishment",
+          "Place of Residence",
+          "Related Parties",
+          "Customs Legislation",
+          "Designated Area",
+          "Exportation",
+          "Voucher",
+          "Activities Performed in a Sovereign Capacity",
+          "Capital Assets",
+          "Administrative Fines",
+          "Administrative Fine Assessment",
+          "Excise Tax",
+          "Tax Group",
+          "Pure Hydrocarbons",
+          "Tax Evasion",
+          "Tax Audit",
+          "Tax Assessment",
+          "Voluntary Disclosure",
+          "Electronic Invoice",
+          "Electronic Credit Note",
+          "Added Tax (VAT) Government Agencies",
+          "Transport-Related Services",
+          "Non-Resident Person",
+          "E-invoicing System"
+        ],
+        "accuracy": 12.7
+      }
+    },
+    "Federal Decree-Law No. (36) of 2023 Regarding Regulating Competition.pdf": {
+      "citations": {
+        "total_extracted": 2,
+        "verified_count": 2,
+        "verified_items": [
+          "Federal Law No. (1) of 1972 on the Competences of Ministries and the Powers of Ministers, as amended",
+          "Federal Law No. (4) of 2012 Regulating Competition"
+        ],
+        "unverified_items": [],
+        "accuracy": 100.0
+      },
+      "definitions": {
+        "total_extracted": 12,
+        "verified_count": 5,
+        "verified_items": [
+          "State",
+          "Ministry",
+          "Relevant Authority",
+          "Sectoral Regulatory Agencies",
+          "Competition"
+        ],
+        "unverified_items": [
+          "Relevant Market",
+          "Economic Activity",
+          "Undertaking",
+          "Agreements",
+          "Dominant Position",
+          "Economic Concentration",
+          "Committee"
+        ],
+        "accuracy": 41.67
+      }
+    }
+  },
+  "overall_stats": {
+    "total_citations_extracted": 109,
+    "total_citations_verified": 109,
+    "total_definitions_extracted": 343,
+    "total_definitions_verified": 94,
+    "citation_accuracy": 100.0,
+    "definition_accuracy": 27.41
+  }
+}

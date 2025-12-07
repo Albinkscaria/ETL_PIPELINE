@@ -1,0 +1,242 @@
+
+Documents ETL Pipeline - Data Science
+Comprehensive System Requirements & Implementation Specification
+Source: Uploaded brief (see citation at the end). fileciteturn0file0
+
+--- OVERVIEW ---
+Objective:
+Implement an ETL pipeline in Python that ingests 15 provided PDF documents, extracts two classes of structured information:
+  1. All citations (legal citations / referenced documents)
+  2. All term-definition pairs (terms and their definitions/meanings)
+The pipeline must combine a deterministic first-pass approach (e.g., regex/rule-based) followed by a non-deterministic second-pass (AI/ML or heuristics/NER) to improve extraction quality. Final output: a single canonicalized, standardized, exportable JSON dataset (and optional CSV export).
+
+Key constraints & mandatory requirements (explicit from the brief):
+- Use Python.
+- Adhere to Object-Oriented Programming (OOP) principles (use modular classes).
+- Provide minimal runtime performance logging and results logging.
+- Host and share codebase on GitHub.
+- Pipeline must ingest and process all 15 provided PDF documents.
+- Output data must be structured, cleaned, canonicalized, and exportable (e.g., JSON/CSV).
+- Pipeline must include clear error-handling and exception logging.
+- Demonstrate AWS usage at least in one minimal valid form (e.g., store PDFs or outputs to S3, run ETL on Lambda/EC2, or use CloudWatch logs).
+- Provide README / documentation describing how to run the pipeline.
+- The deliverable must be reproducible and runnable end-to-end.
+(Reference: Parsed content from the provided PDF brief, pages 1–8.) fileciteturn0file0
+
+--- DETAILED FUNCTIONAL REQUIREMENTS ---
+1. Ingestion:
+   - Accept 15 PDF input documents (the 15 source URLs listed in the brief).
+   - Support local filesystem ingestion and S3 ingestion (S3 URI support).
+   - Validate each PDF before processing (size checks, page count, basic corruption checks).
+   - Produce an ingestion manifest (file name, size, pages, source URL or S3 path, ingestion timestamp).
+
+2. Pre-processing:
+   - Text extraction:
+     * Primary: Use a PDF text parser (pdfminer.six or PyMuPDF / fitz) to extract raw text per page.
+     * Secondary (fallback): If page contains images or no text, run OCR (Tesseract via pytesseract or AWS Textract) on rendered page images.
+     * For pages with mixed text and images (e.g., scanned pages), combine both extractions and deduplicate.
+   - Preserve page-level metadata (page number, bounding boxes if available).
+   - Normalize whitespace and unicode cleanup (NFKC), remove control characters.
+
+3. Deterministic Extraction (First Pass - rule-based):
+   - Implement robust regex rules to detect:
+     * Citations: patterns like "Federal Decree-Law No. (47) of 2022", "Cabinet Resolution No. (55) of 2025", "https://uaelegislation.gov.ae/en/legislations/1582", etc.
+     * Term-definition blocks: typical structure "Term: <term>" followed by "Definition: <definition>" or "Term <term> : <definition>" or formatted definition lists in legal docs.
+   - Heuristics:
+     * Use page-level context (e.g., sections titled "Definitions", "Article (1) Definitions", list markers, bold/uppercase signals).
+     * Capture multi-line definitions: allow greedy matching across lines until next term marker, page break, or section boundary.
+   - Canonicalization rules:
+     * Normalize citations to snake_case with lower-case and underscores (example: "Federal Decree by Law No. (47) of 2022 Concerning Corporate and Business Tax" -> fed_decree_law_47_2022).
+     * Extract numeric ID tokens: law/resolution number and year.
+     * Normalize terms (strip trailing punctuation, normalize whitespace).
+
+4. Non-deterministic Extraction (Second Pass - AI/ML):
+   - Purpose: improve recall and precision from the deterministic pass, resolve ambiguous matches, split/merge extractions, and validate term-definition pairs.
+   - Techniques:
+     * Use an off-the-shelf NER model (SpaCy legal model or fine-tuned transformer) to detect "LAW", "RESOLUTION", "ORGANIZATION", "TERM", "DEFINITION" spans.
+     * Use sentence-level embeddings (e.g., sentence-transformers) or BERT to cluster candidate definitions to deduplicate near-duplicates.
+     * Use an ML classifier (binary) to validate whether a candidate span is a true 'term-definition pair' or 'citation' (train using deterministic outputs as positive/negative with manual labels).
+     * Optionally use a small LLM-based validation step (local model or API) to re-rank or correct extracted pairs where deterministic patterns are low-confidence.
+   - Confidence scoring: attach confidence probabilities to each extraction for downstream filtering.
+
+5. Post-processing & Standardization:
+   - Apply canonicalization mappings and normalization (e.g., remove extra stopwords in names, unify abbreviations).
+   - De-duplicate by:
+     * Exact match after normalization.
+     * Fuzzy match (Levenshtein or embedding similarity) with threshold.
+   - Consolidate multiple mentions across pages/documents into a single canonical entry, recording provenance (document_id, page_numbers, raw_excerpts).
+   - Build final JSON dataset including provenance and confidence.
+
+6. Output Schema (JSON):
+   - Provide a single JSON file with two top-level arrays: "citations" and "term_definitions".
+   - Example structure:
+     {
+       "source_manifest": [{ "doc_id": "...", "filename": "...", "source_url": "...", "pages": N, "ingested_at": "ISO8601" }, ...],
+       "citations": [
+         {
+           "canonical_id": "fed_decree_law_47_2022",
+           "raw_text": "Federal Decree by Law No. (47) of 2022 Concerning Corporate and Business Tax",
+           "normalized": "fed_decree_law_47_2022",
+           "type": "federal_decree_law",
+           "number": 47,
+           "year": 2022,
+           "title": "Concerning Corporate and Business Tax",
+           "document_url": "https://uaelegislation.gov.ae/en/legislations/1582",
+           "provenance": [{"doc_id":"doc1","page":2,"excerpt":"..."}],
+           "confidence": 0.98
+         }, ...
+       ],
+       "term_definitions": [
+         {
+           "term": "Corporate Tax",
+           "definition": "The tax imposed by this Decree-Law on juridical persons and Business income",
+           "normalized_term": "corporate_tax",
+           "provenance": [{"doc_id":"doc1","page":5,"excerpt":"Corporate Tax : The tax imposed ..."}],
+           "confidence": 0.95
+         }, ...
+       ]
+     }
+
+7. Provenance & Logging:
+   - For each extraction keep original raw excerpt, doc filename, page number, line numbers (if available), and extraction method (regex/ocr/ner/ml).
+   - Log stats:
+     * number of documents processed, pages processed, total candidate spans, accepted spans, rejected spans.
+     * runtime per document and overall.
+     * memory usage snapshots (optional).
+   - Minimal runtime performance logging should include total runtime, per-stage runtimes (ingestion, deterministic extraction, ML pass, post-processing), and number of exceptions.
+
+8. Error Handling & Robustness:
+   - Centralized exception handling with structured logs (timestamp, error type, stack trace, doc_id, page).
+   - Retry logic for transient failures (e.g., S3 download/upload, OCR timeouts).
+   - Fallbacks: if deterministic fails, escalate to ML step; if OCR fails, mark page as 'ocr_failed' and continue.
+   - Validation step to ensure final JSON conforms to schema; if not, save failed validation report and partial outputs.
+
+9. AWS Requirements (at least one demonstration):
+   - Minimum valid demonstration options (choose at least one):
+     1. Store input PDFs and outputs to S3 (recommended): Use boto3 to upload/download. Include a small S3-based manifest and sample instructions to create bucket + IAM role.
+     2. Run the ETL on AWS Lambda or EC2 (sample deployment package or Docker container). If Lambda used, limit to small document sample and use S3 triggers.
+     3. Use CloudWatch for logs: push structured logs to CloudWatch via boto3 or awslogs.
+   - Provide Terraform or CloudFormation sample snippet or basic IAM policy guidance for minimal permissions:
+     - s3:GetObject, s3:PutObject, s3:ListBucket
+     - logs:CreateLogGroup, logs:CreateLogStream, logs:PutLogEvents
+   - Note: For OCR, if using AWS Textract, include permission notes for textract:*.
+
+10. Documentation & Reproducibility:
+    - README must include:
+      * Project overview and objectives
+      * Environment setup (Python version, virtualenv/conda, dependencies list and requirements.txt)
+      * How to run locally (examples)
+      * How to run against S3 or with AWS demo
+      * How to run unit tests and integration tests
+      * Expected outputs & sample JSON output structure
+      * Troubleshooting notes
+    - Provide sample config file (YAML/JSON) with:
+      * input source list (local or S3)
+      * output paths
+      * logging level
+      * ML model paths or API keys (if used)
+      * canonicalization rules path
+    - Provide a reproducible environment:
+      * Dockerfile for containerized run (recommended)
+      * Optional: Makefile or CLI wrapper script.
+
+11. Code Structure & OOP Design (module & class suggestions):
+    - package/
+      - ingest/
+        - pdf_reader.py (class PDFReader: methods extract_text(), render_page_image())
+        - ocr.py (class OCRService: methods run_tesseract(), run_textract())
+      - extract/
+        - regex_extractor.py (class RegexExtractor)
+        - heuristic_parser.py (class HeuristicParser)
+      - ml/
+        - ner_model.py (class NERModel)
+        - validator.py (class CandidateValidator)
+        - embedder.py (class Embedder)
+      - pipeline/
+        - etl_pipeline.py (class ETLPipeline: run(), run_document(doc), run_page(page))
+      - utils/
+        - canonicalizer.py (functions canonicalize_citation(), canonicalize_term())
+        - logger.py (class AppLogger)
+        - config.py (Config object)
+        - storage.py (class StorageManager: local & S3)
+      - tests/
+        - unit tests and integration tests
+      - scripts/
+        - run_etl.py (CLI entrypoint)
+      - Dockerfile, requirements.txt, README.md
+    - Each class should be testable and have clear single responsibility.
+
+12. Unit & Integration Testing:
+    - Unit tests for regexes, canonicalization rules, JSON schema compliance.
+    - Integration tests: sample PDFs (or a small subset of pages) to run full pipeline and assert expected output.
+    - CI configuration (GitHub Actions): run linting, unit tests, and optionally a small integration test on push/pull request.
+
+13. Performance & Scaling:
+    - Provide streaming/streamed processing for large PDFs (page-by-page processing).
+    - Optionally parallelize per-document processing (multiprocessing or async I/O).
+    - Benchmarking script that measures per-document throughput and end-to-end latency.
+    - Minimal performance metrics required (per brief): runtime logging and results logging.
+
+14. Security & Privacy:
+    - Avoid hardcoding secrets in code. Use environment variables or AWS Secrets Manager for API keys.
+    - Sanitize logs to avoid writing PII (if any exists).
+    - Use least-privilege IAM policies if using AWS.
+
+15. Deliverables (explicit):
+    - Source code in a GitHub repository (public or private link).
+    - README with run instructions and architecture diagram.
+    - A single canonical JSON output file (and CSV) containing all citations and term-definition pairs extracted from the 15 PDFs.
+    - Minimal AWS demonstration (S3 upload or Lambda/EC2 run, CloudWatch logging).
+    - Unit tests and integration tests.
+    - Runtime logs and results summary (e.g., run_report.json with stats).
+    - Dockerfile or container image and CLI entrypoint.
+
+--- EXAMPLE JSON OUTPUT (SMALL SNIPPET) ---
+{
+  "source_manifest": [
+    {"doc_id":"doc_01","filename":"federal_decree_law_47_2022.pdf","source_url":"https://uaelegislation.gov.ae/en/legislations/1582","pages":12,"ingested_at":"2025-11-29T10:00:00Z"}
+  ],
+  "citations": [
+    {
+      "canonical_id":"fed_decree_law_47_2022",
+      "raw_text":"Federal Decree by Law No. (47) of 2022 Concerning Corporate and Business Tax",
+      "normalized":"fed_decree_law_47_2022",
+      "type":"federal_decree_law",
+      "number":47,
+      "year":2022,
+      "title":"Concerning Corporate and Business Tax",
+      "document_url":"https://uaelegislation.gov.ae/en/legislations/1582",
+      "provenance":[{"doc_id":"doc_01","page":2,"excerpt":"...Definitions..."}],
+      "confidence":0.99
+    }
+  ],
+  "term_definitions":[
+    {
+      "term":"Corporate Tax",
+      "definition":"The tax imposed by this Decree-Law on juridical persons and Business income",
+      "normalized_term":"corporate_tax",
+      "provenance":[{"doc_id":"doc_01","page":5,"excerpt":"Corporate Tax : The tax imposed by this Decree-Law on juridical persons and Business income"}],
+      "confidence":0.96
+    }
+  ]
+}
+
+--- NOTES ON SPECIFIC CONTENT FROM THE PROVIDED BRIEF ---
+- The brief explicitly lists required documents and example citations/terms (pages 1–8). See the source for the 15 URLs and example annotated term-definition pairs. The brief contains an example annotated visualization (image) on page 5 showing the "Definitions" page and highlighted terms (see page 5 image). fileciteturn0file0
+
+--- RECOMMENDED IMPLEMENTATION TIMELINE (Suggested milestones) ---
+1. Week 1: Project scaffolding, ingestion, and basic deterministic extraction (regex).
+2. Week 2: OCR fallback, canonicalization, and JSON output schema; unit tests.
+3. Week 3: Integrate ML/NLP pass; confidence scoring; de-duplication logic.
+4. Week 4: AWS integration (S3 & CloudWatch) + Dockerize + full run on all 15 PDFs.
+5. Week 5: Documentation, performance tuning, final validations, and GitHub repo polish.
+
+--- APPENDIX: SOURCE LIST (as from PDF brief) ---
+(See PDF brief for full URLs and titles; these are the 15 documents to process.)
+Examples include:
+- https://uaelegislation.gov.ae/en/legislations/1582  (Federal Decree by Law No. (47) of 2022 Concerning Corporate and Business Tax)
+- https://uaelegislation.gov.ae/en/legislations/1227  (Federal Decree by Law No. (8) of 2017 Concerning VAT)
+- https://uaelegislation.gov.ae/en/legislations/1223  (Federal Decree by Law No. (7) of 2017 Concerning Excise Tax)
+- ... (full list included in uploaded brief). fileciteturn0file0
+
+--- END OF SPECIFICATION ---
