@@ -20,6 +20,8 @@ from result_merger import ResultMerger
 from human_review_queue import HumanReviewQueue
 from schema_validator import SchemaValidator
 from output_schema_exporter import OutputSchemaExporter
+from aws_storage import AWSStorage
+from groq_enhancer import GroqEnhancer
 
 
 class ETLOrchestrator:
@@ -59,26 +61,49 @@ class ETLOrchestrator:
         
         # Check if AI enhancement is enabled
         self.use_ai_enhancement = self.config.get('use_ai_enhancement', False)
+        self.ai_provider = self.config.get('ai_provider', 'gemini')
         
-        # Initialize Gemini enhancer only if enabled
-        self.gemini_enhancer = None
+        # Initialize AI enhancer based on provider
+        self.ai_enhancer = None
         if self.use_ai_enhancement:
-            api_key_env_name = self.config['gemini_api_key_env']
-            api_key = os.getenv(api_key_env_name)
-            if not api_key:
-                self.logger.warning(f"AI enhancement enabled but API key '{api_key_env_name}' not found. Disabling AI enhancement.")
-                self.use_ai_enhancement = False
+            if self.ai_provider == 'gemini':
+                api_key_env_name = self.config['gemini_api_key_env']
+                api_key = os.getenv(api_key_env_name)
+                if not api_key:
+                    self.logger.warning(f"AI enhancement enabled but API key '{api_key_env_name}' not found. Disabling AI enhancement.")
+                    self.use_ai_enhancement = False
+                else:
+                    self.ai_enhancer = GeminiEnhancer(
+                        api_key=api_key,
+                        model_name=self.config['gemini_model'],
+                        max_retries=self.config['max_retries'],
+                        chunk_size=self.config['chunk_size'],
+                        chunk_overlap=self.config['chunk_overlap']
+                    )
+                    self.logger.info(f"AI enhancement enabled with Gemini ({self.config['gemini_model']})")
+            elif self.ai_provider == 'groq':
+                api_key_env_name = self.config['groq_api_key_env']
+                api_key = os.getenv(api_key_env_name)
+                if not api_key:
+                    self.logger.warning(f"AI enhancement enabled but API key '{api_key_env_name}' not found. Disabling AI enhancement.")
+                    self.use_ai_enhancement = False
+                else:
+                    self.ai_enhancer = GroqEnhancer(api_key=api_key)
+                    self.logger.info(f"AI enhancement enabled with Groq ({self.config['groq_model']})")
             else:
-                self.gemini_enhancer = GeminiEnhancer(
-                    api_key=api_key,
-                    model_name=self.config['gemini_model'],
-                    max_retries=self.config['max_retries'],
-                    chunk_size=self.config['chunk_size'],
-                    chunk_overlap=self.config['chunk_overlap']
-                )
-                self.logger.info("AI enhancement enabled with Gemini")
+                self.logger.warning(f"Unknown AI provider: {self.ai_provider}. Disabling AI enhancement.")
+                self.use_ai_enhancement = False
         else:
             self.logger.info("AI enhancement disabled - using deterministic extraction only")
+        
+        # Initialize AWS storage
+        self.aws_storage = None
+        if self.config.get('aws_enabled', False):
+            self.aws_storage = AWSStorage(
+                bucket_name=self.config.get('aws_s3_bucket', 'YOUR_BUCKET_NAME_HERE'),
+                region=self.config.get('aws_region', 'us-east-1'),
+                enabled=True
+            )
         
         self.logger.info("ETL Orchestrator initialized")
     
@@ -189,6 +214,31 @@ class ETLOrchestrator:
         # Export in requirements-compliant format
         self.output_schema_exporter.export(documents, processing_time)
         
+        # AWS Integration: Upload PDFs and outputs to S3
+        if self.aws_storage and self.aws_storage.enabled:
+            self.logger.info("\n" + "=" * 80)
+            self.logger.info("AWS S3 UPLOAD")
+            self.logger.info("=" * 80)
+            
+            # Upload input PDFs
+            if self.config.get('aws_upload_inputs', True):
+                self.logger.info("Uploading input PDFs to S3...")
+                uploaded = self.aws_storage.upload_directory(
+                    self.config['pdf_directory'],
+                    s3_prefix='inputs/pdfs'
+                )
+                self.logger.info(f"Uploaded {uploaded} PDF files to S3")
+            
+            # Upload output JSON
+            if self.config.get('aws_upload_outputs', True):
+                self.logger.info("Uploading output JSON to S3...")
+                if self.aws_storage.upload_file(
+                    self.config['output_file'],
+                    s3_key='outputs/extracted_data.json'
+                ):
+                    s3_uri = self.aws_storage.get_s3_uri('outputs/extracted_data.json')
+                    self.logger.info(f"Output available at: {s3_uri}")
+        
         # Note: Schema validation is skipped since we're using the new requirements-compliant format
         # The old validator expects the legacy format structure
         
@@ -251,17 +301,17 @@ class ETLOrchestrator:
         ai_citations = []
         ai_definitions = []
         
-        if self.use_ai_enhancement and self.gemini_enhancer:
-            self.logger.info("Stage 3: AI enhancement with Gemini...")
+        if self.use_ai_enhancement and self.ai_enhancer:
+            self.logger.info(f"Stage 3: AI enhancement with {self.ai_provider.upper()}...")
             
             # Combine all page text
             full_text = "\n\n".join([p.text for p in pages])
             
             # Enhance citations
-            ai_citations = self.gemini_enhancer.enhance_citations(full_text, det_citations)
+            ai_citations = self.ai_enhancer.enhance_citations(full_text, det_citations)
             
             # Enhance definitions
-            ai_definitions = self.gemini_enhancer.enhance_definitions(full_text, det_definitions)
+            ai_definitions = self.ai_enhancer.enhance_definitions(full_text, det_definitions)
             
             self.logger.info(f"AI enhancement complete:")
             self.logger.info(f"  - New citations: {len(ai_citations)}")

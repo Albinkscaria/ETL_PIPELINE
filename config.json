@@ -1,9 +1,12 @@
 {
   "pdf_directory": "Data",
   "output_file": "extracted_data.json",
-  "use_ai_enhancement": false,
+  "use_ai_enhancement": true,
+  "ai_provider": "gemini",
   "gemini_model": "gemini-2.5-flash",
   "gemini_api_key_env": "GEMINI_API_KEY",
+  "groq_model": "llama-3.1-8b-instant",
+  "groq_api_key_env": "GROQ_API_KEY",
   "max_retries": 3,
   "chunk_size": 3500,
   "chunk_overlap": 200,
@@ -17,5 +20,10 @@
   "enable_human_review_queue": true,
   "review_threshold": 0.7,
   "enable_caching": false,
-  "log_level": "INFO"
+  "log_level": "INFO",
+  "aws_enabled": true,
+  "aws_s3_bucket": "YOUR_BUCKET_NAME_HERE",
+  "aws_region": "us-east-1",
+  "aws_upload_inputs": true,
+  "aws_upload_outputs": true
 }
